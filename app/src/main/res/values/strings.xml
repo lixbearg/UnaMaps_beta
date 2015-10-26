@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Una Maps Beta</string>
+
+    <string name="hello_world">Howdy!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_scanner">ScannerActivity</string>
+    <string name="title_activity_lista_localidades">Localidades</string>
+
+</resources>

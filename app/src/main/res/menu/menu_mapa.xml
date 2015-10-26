@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MapaActivity">
+    <item
+        android:id="@+id/action_listaLocalidades"
+        android:icon="@drawable/listalocalidades"
+        android:title="Ler QRCode"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_lerqrcode"
+        android:icon="@drawable/lerqr"
+        android:title="Ler QRCode"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_resetarprefs"
+        android:title="Resetar prefs"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
