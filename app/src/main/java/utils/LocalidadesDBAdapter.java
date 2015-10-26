@@ -228,7 +228,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
             String[] whereArgs = new String[] {String.valueOf(tipoSala)};
 
             Cursor cursor = db.query(NOME_TABELA, colunas, where, whereArgs, null, null, null);
-            if (cursor.moveToNext()) {
+            while (cursor.moveToNext()) {
                 salas.add(cursor.getString(cursor.getColumnIndex(COLUNA_NOME)));
             }
             return salas.toArray(new String[salas.size()]);
