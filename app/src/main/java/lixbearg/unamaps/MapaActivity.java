@@ -34,16 +34,13 @@ public class MapaActivity extends TileViewActivity {
 
         if (!Preferencias.getBoolean(this, "FIRST_RUN")) {
 
-            Alert.alert(this, "Primeira utilização!");
             LocalidadesDBAdapter db = new LocalidadesDBAdapter(this);
-            if (db.carregarBase()) {
-                Alert.alert(this, "Base carregada!");
-            } else {
+            if (!db.carregarBase()) {
                 Alert.alert(this, "Erro ao carregar base de dados!");
             }
 
-            //Intent intent = new Intent(this, WelcomeActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this, BetaHelpActivity.class);
+            startActivity(intent);
 
             Preferencias.setBoolean(this, "FIRST_RUN", true);
         }
@@ -82,9 +79,9 @@ public class MapaActivity extends TileViewActivity {
             case R.id.action_listaLocalidades:
                 receberLocalidade();
                 return true;
-            case R.id.action_resetarprefs:
-                Preferencias.setBoolean(this, "FIRST_RUN", false);
-                Alert.alert(this, "First run resetado");
+            case R.id.action_help:
+                Intent intent = new Intent(this, BetaHelpActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

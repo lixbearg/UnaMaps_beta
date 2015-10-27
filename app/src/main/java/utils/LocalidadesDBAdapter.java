@@ -37,7 +37,6 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(CREATE_TABLE);
-            Alert.alert(context, "Banco criado!");
         } catch (SQLException e) {
             Alert.alert(context, "" + e);
         }
@@ -138,8 +137,6 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
         } catch (Exception e){
             Alert.alert(context, "" + e);
         }
-
-        Alert.alert(context, "Limpando tabelas");
     }
 
     private void inserirLocalidades(String nome, int tipo, String qrcode, int x, int y){
@@ -206,6 +203,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
                 int y = cursor.getInt(cursor.getColumnIndex(COLUNA_Y));
                 Localidade localidade = new Localidade(nome, tipo, QRCode, x, y);
                 Alert.alert(context, nome);
+                cursor.close();
                 return localidade;
             }
         } catch (Exception e){
@@ -215,8 +213,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
     }
 
     public String[] selecionarHeadings() {
-        String[] headings = new String[] {"Salas", "Labs", "Outros"};
-        return headings;
+        return new String[] {"Salas", "Labs", "Outros"};
     }
 
     public String[] selecionarSalas(int tipoSala) {
@@ -233,6 +230,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 salas.add(cursor.getString(cursor.getColumnIndex(COLUNA_NOME)));
             }
+            cursor.close();
             return salas.toArray(new String[salas.size()]);
 
         } catch (Exception e){

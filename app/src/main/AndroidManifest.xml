@@ -20,6 +20,11 @@
             android:name=".ListaLocalidadesActivity"
             android:label="@string/title_activity_lista_localidades" >
         </activity>
+        <activity
+            android:name=".BetaHelpActivity"
+            android:label="@string/title_activity_beta_help"
+            android:theme="@style/Transparent">
+        </activity>
     </application>
 
 </manifest>
