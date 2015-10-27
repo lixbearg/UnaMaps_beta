@@ -179,11 +179,13 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
                 int y = cursor.getInt(cursor.getColumnIndex(COLUNA_Y));
                 Localidade localidade = new Localidade(nome, tipo, QRCode, x, y);
                 Alert.alert(context, "Você está aqui:\n" + nome);
+                cursor.close();
                 return localidade;
             }
         } catch (Exception e){
             Alert.alert(context, "" + e);
         }
+        Alert.alert(context, "QRCode inválido!");
         return null;
     }
 

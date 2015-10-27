@@ -107,9 +107,11 @@ public class MapaActivity extends TileViewActivity {
                 if (resultadoScanner.getContents() == null) {
                     Alert.alert(this, "Cancelado");
                 } else {
-                    Localidade localidade = db.selecionarLocalidade(resultadoScanner.getContents());
-                    MapaTileView.adicionarMarcador(mapaUna, marcadorUsuario, localidade);
-                    mapaUna.moveToAndCenter(localidade.coordX, localidade.coordY);
+                    if (db.selecionarLocalidade(resultadoScanner.getContents()) != null) {
+                        Localidade localidade = db.selecionarLocalidade(resultadoScanner.getContents());
+                        MapaTileView.adicionarMarcador(mapaUna, marcadorUsuario, localidade);
+                        mapaUna.moveToAndCenter(localidade.coordX, localidade.coordY);
+                    }
                 }
             } else {
                 Alert.alert(this, "Cancelado");
