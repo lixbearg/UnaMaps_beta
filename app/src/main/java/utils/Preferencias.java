@@ -42,4 +42,34 @@ public class Preferencias {
         editor.clear();
         editor.commit();
     }
+
+    public static void setEstagioJogo(Context context, String codigo){
+
+        switch (codigo){
+            case "INICIO":
+                setInteger(context, "ESTAGIO_JOGO", 0);
+                break;
+            case "OVO1":
+                setInteger(context, "ESTAGIO_JOGO", 1);
+                break;
+            case "OVO2":
+                setInteger(context, "ESTAGIO_JOGO", 2);
+                break;
+            case "OVO3":
+                setInteger(context, "ESTAGIO_JOGO", 3);
+                break;
+            case "OVO4":
+                setInteger(context, "ESTAGIO_JOGO", 4);
+                break;
+            case "OVO5":
+                setInteger(context, "ESTAGIO_JOGO", 5);
+                break;
+            case "OVO6":
+                setInteger(context, "ESTAGIO_JOGO", 6);
+                break;
+            default:
+                setInteger(context, "ESTAGIO_JOGO", 0);
+                break;
+        }
+    }
 }

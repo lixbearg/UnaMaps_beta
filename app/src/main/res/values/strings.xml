@@ -1,10 +1,44 @@
 <resources>
-    <string name="app_name">Una Maps Beta</string>
+    <string name="app_name">UnaMaps Beta</string>
 
     <string name="hello_world">Howdy!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_scanner">ScannerActivity</string>
+    <string name="title_activity_scanner">Scanner</string>
     <string name="title_activity_lista_localidades">Localidades</string>
-    <string name="title_activity_beta_help">BetaHelpActivity</string>
+    <string name="title_activity_beta_help">Ajuda</string>
+    <string name="title_activity_alarme">Configurar Alarmes</string>
+
+    <string name="alarmes_ligar">Ativar alarmes informando o local da próxima aula?</string>
+    <string name="alarmes_tempo">Alertar com quantos minutos de antecedência?</string>
+    <string name="alarmes_segunda">Segunda-feira</string>
+    <string name="alarmes_terca">Terça-feira</string>
+    <string name="alarmes_quarta">Quarta-feira</string>
+    <string name="alarmes_quinta">Quinta-feira</string>
+    <string name="alarmes_sexta">Sexta-feira</string>
+    <string name="alarmes_primeirohor">Primeiro horário</string>
+    <string name="alarmes_segundohor">Segundo horário</string>
+    <string name="alarmes_descricao">Descrição</string>
+    <string name="alarmes_sala">Sala</string>
+
+    <string name="tutorial_titulo">Bem vindo ao Mostra Una 2015!</string>
+    <string name="tutorial_texto">Que tal conhecer alguns dos trabalhos expostos nesse semestre
+                                    e ainda ganhar brindes? Leia o QR Code indicado no banner e
+                                    comece a descobrir o que o Campus Barreiro tem de melhor!</string>
+
+    <string name="pontuacao_texto">Você respondeu %1$d das 5 questões!</string>
+    <string name="pontuacao_dica_titulo">A dica para encontrar o próximo código é:</string>
+    <string name="pontuacao_dica_exemplo">Dentro da área indicada no mapa, busque pelo prédio mais alto...</string>
+
+    <string name="sobre_titulo">UnaMaps</string>
+    <string name="sobre_texto">2015 - Alunos do curso de Análise e Desenvolvimento de Sistemas\nCentro Universitário Una / Barreiro</string>
+    <string name="sobre_fonte_titulo">Código fonte:</string>
+    <string name="sobre_fonte">UnaMaps Beta | <a href="https://github.com/lixbearg/UnaMaps_beta">Github</a></string>
+    <string name="sobre_bibliotecas_titulo">Bibliotecas utilizadas:</string>
+    <string name="sobre_bibliotecas">Zebra Crossing | <a href="https://github.com/zxing/zxing">Github</a>
+        \nZXing Embedded | <a href="https://github.com/journeyapps/zxing-android-embedded">Github</a>
+        \nTileView | <a href="https://github.com/moagrius/TileView">Github</a>
+        \nGif Drawable | <a href="https://github.com/koral--/android-gif-drawable">Github</a></string>
+    <string name="sobre_feedback">Gostou do UnaMaps? Odiou? Quer dar uma sugestão ou nos chamar para tomar um milkshake?</string>
+    <string name="sobre_email"><a href="#">Manda um email pra gente!</a></string>
 
 </resources>

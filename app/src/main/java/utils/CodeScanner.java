@@ -13,6 +13,7 @@ public class CodeScanner {
         IntentIntegrator scanIntegrator = new IntentIntegrator(activity);
         scanIntegrator.setPrompt("Centralize o QRCode no leitor");
         scanIntegrator.setOrientationLocked(false);
+        scanIntegrator.setBeepEnabled(false);
         scanIntegrator.initiateScan();
     }
 }

@@ -1,8 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MapaActivity">
+    android:layout_height="match_parent"
+    tools:context=".MapaActivity">
+
+    <com.qozix.tileview.TileView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/mapaUna"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/btn_star_big_on"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:gravity="center_vertical"
+        android:textStyle="bold|italic"
+        android:textSize="20sp"
+        android:id="@+id/btnPontuacao"
+        android:visibility="gone"/>
 
 </RelativeLayout>

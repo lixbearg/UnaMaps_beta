@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import lixbearg.unamaps.R;
+
 /**
  * Created by Lixbearg on 10/25/2015.
  */
@@ -26,6 +28,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
     private static final int TIPO_SALA = 1;
     private static final int TIPO_LAB = 2;
     private static final int TIPO_OUTROS = 3;
+    private static final int TIPO_ESQUINAS = 4;
     private Context context;
 
     public LocalidadesDBAdapter(Context context){
@@ -65,32 +68,32 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
             inserirLocalidades("Sala de Aula 320", TIPO_SALA, "S320", 1320, 1685);
             inserirLocalidades("Sala de Aula 321", TIPO_SALA, "S321", 1755, 1740);
             inserirLocalidades("Sala de Aula 322", TIPO_SALA, "S322", 1755, 1500);
-            inserirLocalidades("Sala de Aula 326", TIPO_SALA, "S326", 5000, 5000);
-            inserirLocalidades("Sala de Aula 327", TIPO_SALA, "S327", 5000, 5000);
-            inserirLocalidades("Sala de Aula 330", TIPO_SALA, "S330", 5000, 5000);
-            inserirLocalidades("Sala de Aula 331", TIPO_SALA, "S331", 5000, 5000);
-            inserirLocalidades("Sala de Aula 333", TIPO_SALA, "S333", 5000, 5000);
-            inserirLocalidades("Sala de Aula 334", TIPO_SALA, "S334", 5000, 5000);
-            inserirLocalidades("Sala de Aula 335", TIPO_SALA, "S335", 5000, 5000);
-            inserirLocalidades("Sala de Aula 336", TIPO_SALA, "S336", 5000, 5000);
-            inserirLocalidades("Sala de Aula 337", TIPO_SALA, "S337", 5000, 5000);
-            inserirLocalidades("Sala de Aula 338", TIPO_SALA, "S338", 5000, 5000);
-            inserirLocalidades("Sala de Aula 339", TIPO_SALA, "S339", 5000, 5000);
-            inserirLocalidades("Sala de Aula 340", TIPO_SALA, "S340", 5000, 5000);
-            inserirLocalidades("Sala de Aula 341", TIPO_SALA, "S341", 5000, 5000);
-            inserirLocalidades("Sala de Aula 342", TIPO_SALA, "S342", 5000, 5000);
-            inserirLocalidades("Sala de Aula 345", TIPO_SALA, "S345", 5000, 5000);
-            inserirLocalidades("Sala de Aula 346", TIPO_SALA, "S346", 5000, 5000);
-            inserirLocalidades("Sala de Aula 347", TIPO_SALA, "S347", 5000, 5000);
-            inserirLocalidades("Sala de Aula 348", TIPO_SALA, "S348", 5000, 5000);
-            inserirLocalidades("Sala de Aula 349", TIPO_SALA, "S349", 5000, 5000);
-            inserirLocalidades("Sala de Aula 350", TIPO_SALA, "S350", 5000, 5000);
-            inserirLocalidades("Sala de Aula 351", TIPO_SALA, "S351", 5000, 5000);
-            inserirLocalidades("Sala de Aula 352", TIPO_SALA, "S352", 5000, 5000);
-            inserirLocalidades("Sala de Aula 353", TIPO_SALA, "S353", 5000, 5000);
-            inserirLocalidades("Sala de Aula 354", TIPO_SALA, "S354", 5000, 5000);
-            inserirLocalidades("Sala de Aula 355", TIPO_SALA, "S355", 5000, 5000);
-            inserirLocalidades("Sala de Aula 356", TIPO_SALA, "S356", 5000, 5000);
+            inserirLocalidades("Sala de Aula 326", TIPO_SALA, "S326", 1810, 960);
+            inserirLocalidades("Sala de Aula 327", TIPO_SALA, "S327", 1810, 1040);
+            inserirLocalidades("Sala de Aula 330", TIPO_SALA, "S330", 1810, 1555);
+            inserirLocalidades("Sala de Aula 331", TIPO_SALA, "S331", 1810, 1770);
+            inserirLocalidades("Sala de Aula 333", TIPO_SALA, "S333", 2400, 2230);
+            inserirLocalidades("Sala de Aula 334", TIPO_SALA, "S334", 2360, 2230);
+            inserirLocalidades("Sala de Aula 335", TIPO_SALA, "S335", 1990, 2040);
+            inserirLocalidades("Sala de Aula 336", TIPO_SALA, "S336", 1770, 2040);
+            inserirLocalidades("Sala de Aula 337", TIPO_SALA, "S337", 1635, 2040);
+            inserirLocalidades("Sala de Aula 338", TIPO_SALA, "S338", 1430, 2040);
+            inserirLocalidades("Sala de Aula 339", TIPO_SALA, "S339", 1245, 2040);
+            inserirLocalidades("Sala de Aula 340", TIPO_SALA, "S340", 980, 2040);
+            inserirLocalidades("Sala de Aula 341", TIPO_SALA, "S341", 770, 2040);
+            inserirLocalidades("Sala de Aula 342", TIPO_SALA, "S342", 450, 2040);
+            inserirLocalidades("Sala de Aula 345", TIPO_SALA, "S345", 580, 2520);
+            inserirLocalidades("Sala de Aula 346", TIPO_SALA, "S346", 770, 2520);
+            inserirLocalidades("Sala de Aula 347", TIPO_SALA, "S347", 980, 2520);
+            inserirLocalidades("Sala de Aula 348", TIPO_SALA, "S348", 1245, 2520);
+            inserirLocalidades("Sala de Aula 349", TIPO_SALA, "S349", 1430, 2520);
+            inserirLocalidades("Sala de Aula 350", TIPO_SALA, "S350", 1635, 2520);
+            inserirLocalidades("Sala de Aula 351", TIPO_SALA, "S351", 1770, 2520);
+            inserirLocalidades("Sala de Aula 352", TIPO_SALA, "S352", 1990, 2520);
+            inserirLocalidades("Sala de Aula 353", TIPO_SALA, "S353", 2360, 2320);
+            inserirLocalidades("Sala de Aula 354", TIPO_SALA, "S354", 2400, 2320);
+            inserirLocalidades("Sala de Aula 355", TIPO_SALA, "S355", 360, 2380);
+            inserirLocalidades("Sala de Aula 356", TIPO_SALA, "S356", 430, 1095);
 
             inserirLocalidades("Lab de Visagismo 305", TIPO_LAB, "L305", 475, 1817);
             inserirLocalidades("Lab de Anatomia 306", TIPO_LAB, "L306", 500, 1755);
@@ -117,8 +120,20 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
             inserirLocalidades("Sanitários Oeste", TIPO_OUTROS, "SAN1", 410, 860);
             inserirLocalidades("Sanitários Leste", TIPO_OUTROS, "SAN2", 405, 1579);
 
-
-
+            inserirLocalidades("Geraldo Magela com Isaac Newton", TIPO_ESQUINAS, "ES01", 2377, 2053);
+            inserirLocalidades("Geraldo Magela com Carlos D. de Andrade", TIPO_ESQUINAS, "ES02", 1705, 2041);
+            inserirLocalidades("Geraldo Magela com Joana D'arc", TIPO_ESQUINAS, "ES03", 1053, 2045);
+            inserirLocalidades("Geraldo Magela com Tiradentes", TIPO_ESQUINAS, "ES04", 377, 2045);
+            inserirLocalidades("Geraldo Magela com Ayrton Senna", TIPO_ESQUINAS, "ES05", 805, 1953);
+            inserirLocalidades("Geraldo Magela com Nelson Mandela", TIPO_ESQUINAS, "ES06", 1297, 1949);
+            inserirLocalidades("Geraldo Magela com Albert Einstein", TIPO_ESQUINAS, "ES07", 1785, 1949);
+            inserirLocalidades("Steve Jobs com Isaac Newton", TIPO_ESQUINAS, "ES08", 2377, 2497);
+            inserirLocalidades("Steve Jobs com Carlos D. de Andrade", TIPO_ESQUINAS, "ES09", 1701, 2505);
+            inserirLocalidades("Steve Jobs com Joana D'arc", TIPO_ESQUINAS, "ES10", 1053, 2501);
+            inserirLocalidades("Steve Jobs com Tiradentes", TIPO_ESQUINAS, "ES11", 381, 2493);
+            inserirLocalidades("Professora Maurília com Ayrton Senna", TIPO_ESQUINAS, "ES12", 809, 905);
+            inserirLocalidades("Professora Maurília com Nelson Mandela", TIPO_ESQUINAS, "ES13", 1297, 905);
+            inserirLocalidades("Professora Maurília com Albert Einstein", TIPO_ESQUINAS, "ES14", 1777, 905);
 
         } catch (Exception e) {
             Alert.alert(context, "" + e);
@@ -184,6 +199,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
             Alert.alert(context, "" + e);
         }
         Alert.alert(context, "QRCode inválido!");
+        Audio.tocarSFX(context, R.raw.error);
         return null;
     }
 
