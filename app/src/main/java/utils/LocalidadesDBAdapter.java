@@ -29,6 +29,7 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
     private static final int TIPO_LAB = 2;
     private static final int TIPO_OUTROS = 3;
     private static final int TIPO_ESQUINAS = 4;
+    private static final int TIPO_FOG = 5;
     private Context context;
 
     public LocalidadesDBAdapter(Context context){
@@ -134,6 +135,13 @@ public class LocalidadesDBAdapter extends SQLiteOpenHelper {
             inserirLocalidades("Professora Maurília com Ayrton Senna", TIPO_ESQUINAS, "ES12", 809, 905);
             inserirLocalidades("Professora Maurília com Nelson Mandela", TIPO_ESQUINAS, "ES13", 1297, 905);
             inserirLocalidades("Professora Maurília com Albert Einstein", TIPO_ESQUINAS, "ES14", 1777, 905);
+
+            inserirLocalidades("Balcão de informações", TIPO_FOG, "FOG1", 2417, 1933);
+            inserirLocalidades("Sala de aula", TIPO_FOG, "FOG2", 1817, 2021);
+            inserirLocalidades("Impressoras e NSI", TIPO_FOG, "FOG3", 1589, 877);
+            inserirLocalidades("Recepção e coordenação", TIPO_FOG, "FOG4", 789, 1225);
+            inserirLocalidades("Banheiros e mesas de estudo", TIPO_FOG, "FOG5", 489, 2013);
+            inserirLocalidades("Final!", TIPO_FOG, "FOG6", 2365, 2521);
 
         } catch (Exception e) {
             Alert.alert(context, "" + e);

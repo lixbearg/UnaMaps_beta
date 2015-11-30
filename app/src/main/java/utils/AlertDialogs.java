@@ -107,10 +107,36 @@ public class AlertDialogs {
 
         Resources res = context.getResources();
         TextView txtPontuacao = (TextView) view.findViewById (R.id.txtPontuacao);
-        txtPontuacao.setText(String.format(res.getString(R.string.pontuacao_texto), Preferencias.getInteger(context, "PONTUACAO")));
+        txtPontuacao.setText(String.format(res.getString(R.string.pontuacao_texto), Preferencias.getInteger(context, "ESTAGIO_JOGO")));
 
         TextView txtDica = (TextView) view.findViewById (R.id.txtDica);
-        txtDica.setText(R.string.pontuacao_dica_exemplo);
+
+        switch (Preferencias.getInteger(context, "ESTAGIO_JOGO")){
+            case 0:
+                txtDica.setText(R.string.pontuacao_dica_0);
+                break;
+            case 1:
+                txtDica.setText(R.string.pontuacao_dica_1);
+                break;
+            case 2:
+                txtDica.setText(R.string.pontuacao_dica_2);
+                break;
+            case 3:
+                txtDica.setText(R.string.pontuacao_dica_3);
+                break;
+            case 4:
+                txtDica.setText(R.string.pontuacao_dica_4);
+                break;
+            case 5:
+                txtDica.setText(R.string.pontuacao_dica_5);
+                break;
+            case 6:
+                txtDica.setText(R.string.pontuacao_dica_6);
+                break;
+            default:
+                txtDica.setText(R.string.pontuacao_dica_0);
+                break;
+        }
 
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -148,6 +174,77 @@ public class AlertDialogs {
             }
         });
 
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    public static void exibirDica(Context context){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        switch (Preferencias.getInteger(context, "ESTAGIO_JOGO")){
+            case 0:
+                builder.setTitle(R.string.tutorial_titulo);
+                builder.setMessage(R.string.tutorial_texto);
+                break;
+            case 1:
+                builder.setTitle(R.string.titulo_estagio1);
+                builder.setMessage(R.string.dica_estagio1);
+                break;
+            case 2:
+                builder.setTitle(R.string.titulo_estagio2);
+                builder.setMessage(R.string.dica_estagio2);
+                break;
+            case 3:
+                builder.setTitle(R.string.titulo_estagio3);
+                builder.setMessage(R.string.dica_estagio3);
+                break;
+            case 4:
+                builder.setTitle(R.string.titulo_estagio4);
+                builder.setMessage(R.string.dica_estagio4);
+                break;
+            case 5:
+                builder.setTitle(R.string.titulo_estagio5);
+                builder.setMessage(R.string.dica_estagio5);
+                break;
+            case 6:
+                builder.setTitle(R.string.titulo_estagio6);
+                builder.setMessage(R.string.dica_estagio6);
+                break;
+            default:
+                builder.setTitle(R.string.tutorial_titulo);
+                builder.setMessage(R.string.tutorial_texto);
+                break;
+        }
+
+        builder.setPositiveButton("OK!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    public static void exibirFinal(Context context) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        if (!Preferencias.getBoolean(context, "UMASTER")){
+            builder.setTitle(R.string.cheat_titulo);
+            builder.setMessage(R.string.cheat_texto);
+        } else {
+            builder.setTitle(R.string.final_titulo);
+            builder.setMessage(R.string.final_texto);
+        }
+
+        builder.setPositiveButton("OK!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
 

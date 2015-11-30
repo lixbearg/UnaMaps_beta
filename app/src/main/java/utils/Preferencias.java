@@ -49,27 +49,32 @@ public class Preferencias {
             case "INICIO":
                 setInteger(context, "ESTAGIO_JOGO", 0);
                 break;
-            case "OVO1":
+            case "FOG1":
                 setInteger(context, "ESTAGIO_JOGO", 1);
                 break;
-            case "OVO2":
+            case "FOG2":
                 setInteger(context, "ESTAGIO_JOGO", 2);
                 break;
-            case "OVO3":
+            case "FOG3":
                 setInteger(context, "ESTAGIO_JOGO", 3);
                 break;
-            case "OVO4":
+            case "FOG4":
                 setInteger(context, "ESTAGIO_JOGO", 4);
                 break;
-            case "OVO5":
+            case "FOG5":
                 setInteger(context, "ESTAGIO_JOGO", 5);
                 break;
-            case "OVO6":
+            case "FOG6":
                 setInteger(context, "ESTAGIO_JOGO", 6);
                 break;
             default:
                 setInteger(context, "ESTAGIO_JOGO", 0);
                 break;
         }
+    }
+
+    public static int getEstagioJogo(Context context) {
+        SharedPreferences pref = context.getSharedPreferences(PREF_ID, 0);
+        return pref.getInt("ESTAGIO_JOGO", 0);
     }
 }

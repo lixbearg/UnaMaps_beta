@@ -23,11 +23,12 @@ import com.qozix.tileview.hotspots.HotSpotEventListener;
 import com.qozix.tileview.markers.MarkerEventListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import pl.droidsonroids.gif.GifImageView;
 import utils.Alert;
 import utils.AlertDialogs;
 import utils.Audio;
+import utils.Callout;
 import utils.CodeScanner;
 import utils.Localidade;
 import utils.LocalidadesDBAdapter;
@@ -41,14 +42,15 @@ public class MapaActivity extends TileViewActivity {
     private TileView mapaUna;
     private ImageView marcadorUsuario;
     private ImageView marcadorLocalidade;
-    private GifImageView marcadorSpark;
+    private ImageView marcadorSpark;
     private static final String TITLE_NORMAL = "UnaMaps Beta";
     private static final String TITLE_MAROTO = "UnaMaps do Maroto";
     private static final int LOCALIDADE_REQUEST = 1;
     private static final int SPEECH_REQUEST = 2;
     private static final String CONJURACAO_ABRIR = "eu juro solenemente não fazer nada de bom";
     private static final String CONJURACAO_FECHAR = "malfeito feito";
-    private static final String PROMPT_ABRIR = "Você encontrou um mapa mágico criado por um grupo de alunos, mas ele está em branco...";
+    private static final String PROMPT_ABRIR = "Você encontrou um jovem com um mapa em branco nas mãos. " +
+            "Segundo ele, é preciso dizer algumas palavras mágicas para que seu conteúdo seja revelado...";
     private static final String PROMPT_FECHAR = "... tudo feito?";
     private static boolean MAROTO_ON = false;
     private SensorManager sensorManager;
@@ -74,18 +76,25 @@ public class MapaActivity extends TileViewActivity {
             Preferencias.setBoolean(this, "FIRST_RUN", true);
             Preferencias.setEstagioJogo(this, "INICIO");
             Preferencias.setInteger(this, "PONTUACAO", 0);
+
+            AlertDialogs.exibirTutorial(this);
+
         }
 
         setContentView(R.layout.activity_mapa);
         mapaUna = (TileView) findViewById(R.id.mapaUna);
         MapaTileView.criarMapa(mapaUna);
         MAROTO_ON = false;
+
+        if (Preferencias.getEstagioJogo(this) < 6) {
+            iniciarJogo();
+            MOSTRAUNA_ON = true;
+        } else {
+            MOSTRAUNA_ON = false;
+        }
+
         inicializarMarcadores();
         inicializarSensores();
-
-        if (MOSTRAUNA_ON) {
-            iniciarJogo();
-        }
     }
 
     @Override
@@ -179,11 +188,22 @@ public class MapaActivity extends TileViewActivity {
                 if (resultadoScanner.getContents() == null) {
                     Alert.alert(this, "Cancelado");
                 } else {
-                    if (resultadoScanner.getContents().substring(0, 3).equals("OVO")) {
-                        iniciarJogo();
-                        AlertDialogs.exibirQuestionario(this, Integer.parseInt(resultadoScanner.getContents().substring(3)));
+                    if (resultadoScanner.getContents().substring(0, 3).equals("FOG")) {
+                        if (!resultadoScanner.getContents().endsWith(String.valueOf(Preferencias.getInteger(this, "ESTAGIO_JOGO") + 1))) {
+                            Alert.alert(this, "Ops! Esse não é o código que estamos procurando!");
+                        } else if (resultadoScanner.getContents().endsWith("6")) {
+                            Preferencias.setBoolean(this, "UMASTER", true);
+                            encerrarJogo();
+                        } else {
                         Preferencias.setEstagioJogo(this, resultadoScanner.getContents());
+                        AlertDialogs.exibirDica(this);
                         MapaTileView.criarFog(this, fogLayer);
+                        atualizarPontuacao();
+                        }
+                        Localidade localidade = db.selecionarLocalidade(resultadoScanner.getContents());
+                        MapaTileView.adicionarMarcador(mapaUna, marcadorUsuario, localidade);
+                        mapaUna.moveToAndCenter(localidade.coordX, localidade.coordY);
+                        Audio.tocarSFX(this, R.raw.menu);
                     } else if (db.selecionarLocalidade(resultadoScanner.getContents()) != null) {
                         Localidade localidade = db.selecionarLocalidade(resultadoScanner.getContents());
                         MapaTileView.adicionarMarcador(mapaUna, marcadorUsuario, localidade);
@@ -203,6 +223,8 @@ public class MapaActivity extends TileViewActivity {
             if (v.getTag() == "Usuário") {
                 Alert.alert(getApplicationContext(), "Você está aqui!");
                 mapaUna.moveToMarker(marcadorUsuario, true);
+            } else if (v.getTag() == "Spark") {
+                inicializarVoiceRecognition();
             }
         }
     };
@@ -211,7 +233,38 @@ public class MapaActivity extends TileViewActivity {
 
         @Override
         public void onHotSpotTap(HotSpot hotSpot, int i, int i1) {
-            inicializarVoiceRecognition();
+
+            // Preguiça de fazer SWITCH CASE com string...
+            if (hotSpot.getTag() ==  "Maroto") {
+                inicializarVoiceRecognition();
+            } else if (hotSpot.getTag() == "NSI"){
+                criarCallout(1052, 1033, -0.5f, 0f, "NSI", "Núcleo de Suporte à Informática. Responsável pela área de tecnologia, comunicação e infraestrutura de T.I. do campus.");
+            } else if (hotSpot.getTag() == "ESR"){
+                criarCallout(2660, 776, -0.5f, 0, "Escadas rolantes", "Acesso ao estacionamento, rua Benedito dos Santos e ViaShopping.");
+            } else if (hotSpot.getTag() == "ESC"){
+                criarCallout(200, 440, 0f, 0f, "Escadas", "Acesso ao segundo piso do campus.");
+            } else if (hotSpot.getTag() == "ELV"){
+                criarCallout(2411, 1826, -0.5f, 0f, "Elevadores", "Acesso aos 5 pisos do prédio: Viabrasil, lojas, estacionamento, Una.");
+
+            } else if (hotSpot.getTag() == "Mesas1"){
+                criarCallout(228, 755, -0f, 0, "Mesas", "Área de convivência do campus. Utilizado para estudo e confraternização entre alunos e convidados.");
+            } else if (hotSpot.getTag() == "Mesas2"){
+                criarCallout(1731, 908, -0.5f, 0f, "Mesas", "Área de convivência do campus. Utilizado para estudo e confraternização entre alunos e convidados.");
+            } else if (hotSpot.getTag() == "Mesas3") {
+                criarCallout(340, 1994, -0f, 0f, "Mesas", "Área de convivência do campus. Utilizado para estudo e confraternização entre alunos e convidados.");
+            }  else if (hotSpot.getTag() == "Info"){
+                criarCallout(2407, 1996, -0.5f, 0, "Bancada de informações", "Disponibiliza informações referentes à localização no campus." +
+                        "Os professores à utilizam para pegar as chaves das salas e o controle dos seus respectivos aparelhos de ar-condicionado.\n" +
+                        "Funciona também como achados e perdidos.");
+            } else if (hotSpot.getTag() == "Carregadores"){
+                criarCallout(2240, 2111, -0.5f, 0f, "Carregadores", "Totem com vários conectores que possibilitam o carregamento de aparelhos celulares.");
+            } else if (hotSpot.getTag() == "Impressoras") {
+                criarCallout(1572, 980, -0.5f, 0f, "Impressoras", "Através do RA e senha do aluno, possibilita a impressão de documentos contidos na fila de espera da rede.");
+            } else if (hotSpot.getTag() == "Banheiro1"){
+                criarCallout(197, 964, -0f, 0f, "Sanitários", "Área de higiene pessoal.");
+            } else if (hotSpot.getTag() == "Banheiro2") {
+                criarCallout(215, 1706, -0f, 0f, "Sanitários", "Área de higiene pessoal.");
+            }
         }
     };
 
@@ -230,15 +283,31 @@ public class MapaActivity extends TileViewActivity {
         marcadorLocalidade.setImageResource(R.drawable.pin_red);
         marcadorLocalidade.setTag("Localidade");
 
-        marcadorSpark = new GifImageView(this);
-        marcadorSpark.setImageResource(R.drawable.spark);
-        marcadorLocalidade.setTag("Spark");
-        MapaTileView.adicionarSpark(mapaUna, marcadorSpark, 2400, 2960);
+        inicializarSpark();
 
         mapaUna.addMarkerEventListener(markerEventListener);
 
-        MapaTileView.criarHotspot(mapaUna);
+//        MapaTileView.criarHotspotMaroto(mapaUna);
+        MapaTileView.criarHotspotNSI(mapaUna);
+        MapaTileView.criarHotspotEscada(mapaUna);
+        MapaTileView.criarHotspotEscadaRolante(mapaUna);
+        MapaTileView.criarHotspotElevadores(mapaUna);
+        MapaTileView.criarHotspotInformacoes(mapaUna);
         mapaUna.addHotSpotEventListener(hotSpotEventListener);
+    }
+
+    private void inicializarSpark() {
+
+        if (!MOSTRAUNA_ON) {
+            marcadorSpark = new ImageView(this);
+            marcadorSpark.setImageResource(R.drawable.harry);
+            marcadorSpark.setTag("Spark");
+            MapaTileView.adicionarSpark(mapaUna, marcadorSpark, 2700, 3300);
+
+            if (Preferencias.getBoolean(this, "UMASTER")) {
+                marcadorUsuario.setImageResource(R.drawable.pegmanking);
+            }
+        }
     }
 
     private void inicializarSensores() {
@@ -250,8 +319,16 @@ public class MapaActivity extends TileViewActivity {
 
             @Override
             public void onShake(int count) {
-                if (count > 5) {
-                    inicializarVoiceRecognition();
+                if (count > 4) {
+                    if (MOSTRAUNA_ON) {
+                        encerrarJogo();
+                        Alert.alert(getApplicationContext(), "HEY! Isso não vale! :(");
+                    } else {
+                        String[] array = getApplicationContext().getResources().getStringArray(R.array.woop);
+                        String randomStr = array[new Random().nextInt(array.length)];
+                        Alert.alert(getApplicationContext(), randomStr);
+                    }
+                    Audio.tocarSFX(getApplicationContext(), R.raw.woop);
                 }
             }
         });
@@ -263,6 +340,8 @@ public class MapaActivity extends TileViewActivity {
         intentmaroto.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "pt-BR");
         intentmaroto.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");
         intentmaroto.putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_PREFERENCE, true);
+        intentmaroto.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 10000);
+        intentmaroto.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 10000);
         if (!MAROTO_ON) {
             intentmaroto.putExtra(RecognizerIntent.EXTRA_PROMPT, PROMPT_ABRIR);
         } else {
@@ -280,7 +359,7 @@ public class MapaActivity extends TileViewActivity {
 
         Button btnPontuacao = (Button) findViewById(R.id.btnPontuacao);
         btnPontuacao.setVisibility(View.VISIBLE);
-        btnPontuacao.setText("x" + Preferencias.getInteger(this, "PONTUACAO"));
+        btnPontuacao.setText("x" + Preferencias.getInteger(this, "ESTAGIO_JOGO"));
         btnPontuacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -289,14 +368,45 @@ public class MapaActivity extends TileViewActivity {
         });
     }
 
+    private void atualizarPontuacao() {
+
+        Button btnPontuacao = (Button) findViewById(R.id.btnPontuacao);
+        btnPontuacao.setText("x" + Preferencias.getInteger(this, "ESTAGIO_JOGO"));
+
+    }
+
     private void iniciarJogo() {
 
         exibirPontuacao();
         fogLayer = new ScalingLayout(this);
-        mapaUna.addView(fogLayer);
+        mapaUna.addView(fogLayer, 2);
         MapaTileView.criarFog(this, fogLayer);
-        AlertDialogs.exibirTutorial(this);
 
     }
 
+    private void encerrarJogo() {
+
+        Button btnPontuacao = (Button) findViewById(R.id.btnPontuacao);
+        btnPontuacao.setVisibility(View.GONE);
+        Preferencias.setEstagioJogo(this, "FOG6");
+        MapaTileView.criarFog(this, fogLayer);
+        MOSTRAUNA_ON = false;
+        inicializarSpark();
+        AlertDialogs.exibirFinal(this);
+
+    }
+
+    private void criarCallout(double X, double Y, float anchorX, float anchorY, String titulo, String texto) {
+
+        Callout callout = new Callout(getApplicationContext());
+        mapaUna.addCallout(callout, X, Y, anchorX, anchorY);
+        callout.transitionIn();
+        callout.setTitle(titulo);
+        callout.setSubtitle(texto);
+        if (anchorX == 0 && anchorY == 0){
+            mapaUna.moveTo((X - 100), (Y - 500));
+        } else {
+            mapaUna.moveToAndCenter(X, Y);
+        }
+    }
 }

@@ -30,6 +30,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/holo_blue_dark"
-        android:padding="40dp"/>
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="10dp"/>
 
 </LinearLayout>

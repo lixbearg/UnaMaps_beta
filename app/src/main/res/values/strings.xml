@@ -20,14 +20,32 @@
     <string name="alarmes_descricao">Descrição</string>
     <string name="alarmes_sala">Sala</string>
 
-    <string name="tutorial_titulo">Bem vindo ao Mostra Una 2015!</string>
-    <string name="tutorial_texto">Que tal conhecer alguns dos trabalhos expostos nesse semestre
-                                    e ainda ganhar brindes? Leia o QR Code indicado no banner e
-                                    comece a descobrir o que o Campus Barreiro tem de melhor!</string>
+    <string name="tutorial_titulo">Seja bem vindo, UConqueror!</string>
+    <string name="tutorial_texto">Que tal conhecer um pouco mais sobre sua faculdade? Utilize o leitor de
+    QR codes para encontrar os códigos espalhados pelo campus e descobrir o mapa. O primeiro está bem perto, aliás!
+    Que tal olhar na bancada de informações?</string>
 
-    <string name="pontuacao_texto">Você respondeu %1$d das 5 questões!</string>
-    <string name="pontuacao_dica_titulo">A dica para encontrar o próximo código é:</string>
-    <string name="pontuacao_dica_exemplo">Dentro da área indicada no mapa, busque pelo prédio mais alto...</string>
+    <string name="final_titulo">Yay! That\'s all, folks!</string>
+    <string name="final_texto">Obrigado por participar da demonstração de nosso Projeto Aplicado!
+    Você agora é um <b>UMaster, com direito a coroa e tudo!</b> Com a sua ajuda, faremos um aplicativo que será
+    útil aos novos alunos que chegarem aqui.\nConte-nos o que achou no menu \"Sobre\" ali em cima, e depois
+    descubra o último segredo que deixamos para você no mapa… :D</string>
+
+    <string name="cheat_titulo">Yay! That\'s all, folks!</string>
+    <string name="cheat_texto">Obrigado por participar da demonstração de nosso Projeto Aplicado
+    (mesmo usando cheats… haha)! Com a sua ajuda, faremos um aplicativo que será
+    útil aos novos alunos que chegarem aqui.\nConte-nos o que achou no menu \"Sobre\" ali em cima, e depois
+    descubra o último segredo que deixamos para você no mapa… :D</string>
+
+    <string name="pontuacao_texto">Você encontrou %1$d dos 6 códigos!</string>
+    <string name="pontuacao_dica_titulo">Encontre o próximo QRCode para continuar descobrindo o mapa!</string>
+    <string name="pontuacao_dica_0">Talvez o pessoal da <i>mesa de informações</i> na portaria possa te ajudar…</string>
+    <string name="pontuacao_dica_1">Quando não há mapas, as <i>placas</i> são os melhores indicadores…</string>
+    <string name="pontuacao_dica_2">É <i>impressão</i> minha ou a área marcada tá muito grande?</string>
+    <string name="pontuacao_dica_3">Se nosso aplicativo tiver uma boa <i>recepção</i> entre os alunos, poderá até se tornar um produto!</string>
+    <string name="pontuacao_dica_4">Às vezes é legal sentar nos bancos e ver as aulas de Cálculo pegando fogo pela porta da <i>sala</i>…</string>
+    <string name="pontuacao_dica_5">Nessa altura você já está mestre, dar dicas seria como falar com as <i>paredes</i>…</string>
+    <string name="pontuacao_dica_6">Wat?</string>
 
     <string name="sobre_titulo">UnaMaps</string>
     <string name="sobre_texto">2015 - Alunos do curso de Análise e Desenvolvimento de Sistemas\nCentro Universitário Una / Barreiro</string>
@@ -40,5 +58,56 @@
         \nGif Drawable | <a href="https://github.com/koral--/android-gif-drawable">Github</a></string>
     <string name="sobre_feedback">Gostou do UnaMaps? Odiou? Quer dar uma sugestão ou nos chamar para tomar um milkshake?</string>
     <string name="sobre_email"><a href="#">Manda um email pra gente!</a></string>
+
+    <string name="titulo_estagio1">Muito bem! Mas essa foi fácil demais!</string>
+    <string name="dica_estagio1">Se quiser saber mais sobre a estrutura do campus, toque nos ícones que aparecem pelo mapa. O próximo QR Code está em algum lugar dentro da área demarcada!</string>
+
+    <string name="titulo_estagio2">Ótimo, esse foi o segundo!</string>
+    <string name="dica_estagio2">No UnaMaps, as salas de aula são da cor vermelha, e os labs, da cor verde, assim como as placas de identificação. Hora de encontrar o próximo QR Code!</string>
+
+    <string name="titulo_estagio3">Estamos no caminho certo!</string>
+    <string name="dica_estagio3">Nossas queridas impressoras, que nos salvam tantas vezes… Nesse corredor ainda temos o NSI, mesas e os banheiros ao final.\nO próximo QR Code está em um lugar muito importante!</string>
+
+    <string name="titulo_estagio4">Eis um lugar importante!</string>
+    <string name="dica_estagio4">\"Os professores abrem a porta, mas você deve entrar por si mesmo\", já diziam…\nPerto do próximo QR Code, você pode até parar pra tomar uma água e descansar um pouco.</string>
+
+    <string name="titulo_estagio5">Quase lá!</string>
+    <string name="dica_estagio5">Estamos te fazendo andar, né! Não se preocupe, é hora de encontrar o último QR Code e receber o título de <b>UMaster!</b> Aliás, a Rua Steve Jobs parece isolada, mas tudo em cinza aí no mapa já está nos planos de construção!</string>
+
+    <string name="titulo_estagio6">Titulo do estágio 6</string>
+    <string name="dica_estagio6">Dica do estágio 6</string>
+
+    <string-array name="woop">
+        <item name="woop0">\@_@</item>
+        <item name="woop1">Balança Pema, balança sem parar ♪</item>
+        <item name="woop2">Woot!</item>
+        <item name="woop3">I need scissors! 51!</item>
+        <item name="woop4">youtube.com/watch?v=h7B7LmNy9Fo</item>
+        <item name="woop5">newfags can\'t triforce \n  ▲\n▲▲</item>
+        <item name="woop6">OH MY GOD! THEY KILLED KENNY!</item>
+        <item name="woop7">Wololooooooo…</item>
+        <item name="woop8">Dica número 1: é um país da Europa.</item>
+        <item name="woop9">Você sabia que tem um outro mapa escondido aqui nessa aplicação?</item>
+        <item name="woop10">Em todos estes anos nessa indústria vital, esta é a primeira vez que isso me acontece…</item>
+        <item name="woop11">↑ ↑ ↓ ↓ ← → ← → B A Start</item>
+        <item name="woop12">Tudo depende.</item>
+        <item name="woop13">Sempre leve uma banana quando for a uma festa. As bananas são boas!</item>
+        <item name="woop14">P. Sherman 42 Wallaby Way, Sydney.</item>
+        <item name="woop15">All your base are belong to us</item>
+        <item name="woop16">Never gonna give you up ♪</item>
+        <item name="woop17">Never gonna let you down ♪</item>
+        <item name="woop18">Never gonna tell a lie ♪</item>
+        <item name="woop19">And hurt you ♪</item>
+        <item name="woop20">HOMEM LENHA</item>
+        <item name="woop21">Essa paz é que verdadeiros guerreiros lutam para ter!</item>
+        <item name="woop22">わああああああ~~~~!</item>
+        <item name="woop23">Acabou o frio! Tá quentinho! NA PESADÃO!</item>
+        <item name="woop24">Parangaricutirimirruaro!</item>
+        <item name="woop25">O primeiro de muitos!</item>
+        <item name="woop26">Peixes não fedem.</item>
+        <item name="woop27">Que bonito bolo, que bonitas velas…</item>
+        <item name="woop28">Aperta 1 ele liga.</item>
+        <item name="woop29">Eu tava com o áis, ele tava com o reis…</item>
+    </string-array>
 
 </resources>
